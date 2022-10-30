@@ -6,6 +6,6 @@ if (!defined('ABSPATH')) {
 
 require_once ABSPATH . './src/abstract/ASelfEmployee.php';
 
-class SelfEmployee extends ASelfEmployee {
+class ConcreteSelfEmployee extends ASelfEmployee {
     
 }

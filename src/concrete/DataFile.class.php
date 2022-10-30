@@ -6,6 +6,7 @@ class DataFile {
     public function __construct($path) {
         $this->path = $path;
         $this -> dataFile = fopen($this->path, "r") or die("Impossible d'ouvrir le fichier. Il y a probablement un problème avec le chemin indiqué.");
+        echo "Fichier ouvert" . PHP_EOL; // Allows us to check opening / closing of files.
     }
 
     public function readFile() {
@@ -26,8 +27,7 @@ class DataFile {
     }
 
     public function convertFile() {
-        $dataFile = fopen($this->path, "r") or die("Impossible d'ouvrir le fichier. Il y a probablement un problème avec le chemin indiqué.");
-        $dataRead = fread($dataFile, filesize($this->path));
+        $dataRead = fread($this->dataFile, filesize($this->path));
         $newLine = "\n";
         $coma = ",";
         $space = " ";
@@ -48,11 +48,11 @@ class DataFile {
     public function closeFile() {
         try {
             fclose($this -> dataFile);
-            echo "Fichier fermé" . PHP_EOL;
+            echo "Fichier fermé" . PHP_EOL; // Allows us to check opening / closing of files.
             return true;
         }
         catch (error $e) {
-            echo "Impossible de fermer le fichier" . $e . PHP_EOL;
+            echo "Impossible de fermer le fichier" . $e . PHP_EOL; // Allows us to check opening / closing of files.
             return false;
         }
     }
