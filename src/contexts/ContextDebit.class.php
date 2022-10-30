@@ -13,11 +13,11 @@ class ContextDebit {
     }
 
     public function getSSC() {
-        $social=$this->strategy->getSSC();
+        $social= $this->strategy->getSSC();
     }
 
-    public function getTaxRate() {
-        $taxRate = $this->strategy->getTaxRate();
+    public function getTax() {
+        $taxRate = $this->strategy->getTax();
     }
 
     public function calculateTurnoverIT() {

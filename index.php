@@ -8,7 +8,6 @@ if (!defined('ABSPATH')) {
 
 require_once ABSPATH . './src/concrete/DataFile.class.php';
 require_once ABSPATH . './src/concrete/SelfEmployees/ConcreteSelfEmployee.class.php';
-require_once ABSPATH . './src/abstract/ReportsCreator.php';
 
 /* ACTIONS */
 
@@ -30,6 +29,7 @@ for ($counter=0; $counter < count($dataArray); $counter += 1) {
         print("Numéro de siret inexact, rapport abandonné.\n\n");
         continue;
     }
-    // Print user info:
-    ${"user" . $counter}->__toString();
+    // Store user info:
+    $userInfo = ${"user" . $counter}->storeUserInfo();
+    print_r($userInfo);
 }
