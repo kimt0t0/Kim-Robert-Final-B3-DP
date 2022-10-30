@@ -34,12 +34,13 @@ class DataFile {
         $dataFile = fopen($this->path, "r") or die("Impossible d'ouvrir le fichier. Il y a probablement un problème avec le chemin indiqué.");
         $dataRead = fread($dataFile, filesize($this->path));
         $newLine = "\n";
-        $coma = ',';
+        $coma = ",";
+        $space = " ";
         $splitData = explode($newLine, $dataRead);
         $dataArray[] = NULL;
 
         foreach($splitData as $str) {
-            $row = explode($coma, $str);
+            $row = explode($coma,trim($str));
             array_push($dataArray, $row);
         }
 

@@ -24,5 +24,9 @@ $dataFile->closeFile();
 //Instanciate self-employee objects
 for ($counter=0; $counter < count($dataArray); $counter += 1) {
     ${"user" . $counter} = new SelfEmployee($counter, $dataArray[$counter]);
+    if (${"user" . $counter}->checkSiret() !== true) {
+        print("Numéro de siret inexact, rapport abandonné.\n");
+        continue;
+    }
     ${"user" . $counter}->__toString();
 }

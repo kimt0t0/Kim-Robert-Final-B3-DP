@@ -1,8 +1,19 @@
 <?php
 
+if (!defined('ABSPATH')) {
+    define('ABSPATH', __DIR__ . '/');
+}
+
+/* DEPENDENCIES */
+require_once ABSPATH . './src/concrete/Activities/BIC.class.php';
+require_once ABSPATH . './src/concrete/Activities/BICV.class.php';
+require_once ABSPATH . './src/concrete/Activities/BNC.class.php';
+
+// I created an abstract class so that if we want to create more specific cases of self-employment it will be easier
 abstract class ASelfEmployee {
 
     public function __construct($index, $userArray) {
+        
         $this->num = $index;
 
         $this->firstName = $userArray[0];
@@ -15,16 +26,26 @@ abstract class ASelfEmployee {
 
     public function __toString() {
         print("- Rapport numéro " . $this->num);
-        print("- Nom: " . $this->lastName);
-        print("- Prénom: " . $this->firstName);
-        print("SIRET: " . $this->siret);
-        print("- Régime d activite: " . $this->activityType);
-        print("- Type d'imposition: " . $this->debitType);
-        print("- CA HT mensuel: " . $this->turnoverET);
+        print("\n- Nom: " . $this->lastName);
+        print("\n- Prénom: " . $this->firstName);
+        print("\n- SIRET: " . $this->siret);
+        print("\n- Régime d activite: " . $this->activityType);
+        print("\n- Type d'imposition: " . $this->debitType);
+        print("\n- CA HT mensuel: " . $this->turnoverET);
+        print("\n\n");
         return true;
     }
 
-    // public function calculateTurnoverIT() {
+    public function checkSiret() {
+        $siretSpaceless = trim($this->siret);
+        $siretLength = strlen($siretSpaceless);
+        if ($siretLength === 14) {
+            return true;
+        }
+        else { return false; }
+    }
+
+    // public function getTaxRate() {
     //     try {
     //         switch ($this->activity) {
     //             case 
@@ -37,5 +58,7 @@ abstract class ASelfEmployee {
     //         return false;
     //     }
     // }
+
+    public function getSSCRate() {}
 
 }
