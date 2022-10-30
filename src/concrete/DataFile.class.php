@@ -45,7 +45,7 @@ class DataFile {
 
         array_splice($dataArray, 0, 2); //deletes the first line in the document, that has to be ignored
 
-        return print_r($dataArray);
+        return $dataArray;
     }
 
     // automates the file's closing

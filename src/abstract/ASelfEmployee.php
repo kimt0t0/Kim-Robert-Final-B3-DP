@@ -24,18 +24,18 @@ abstract class ASelfEmployee {
         return true;
     }
 
-    public function calculateTurnoverIT() {
-        try {
-            switch ($this->activity) {
-                case 
-            }
-            default: 
-            echo "La valeur d'activité entrée n'est pas prise en compte par notre programme. Veuillez vérifier que vous n'avez pas commis d'erreur.\n Valeurs autorisées: ."
-        }
-        except (exception $e) {
-            echo "Il y a eu un problème lors du calcul de l'impôt:" . $e . PHP_EOL;
-            return false;
-        }
-    }
+    // public function calculateTurnoverIT() {
+    //     try {
+    //         switch ($this->activity) {
+    //             case 
+    //         }
+    //         default: 
+    //         echo "La valeur d'activité entrée n'est pas prise en compte par notre programme. Veuillez vérifier que vous n'avez pas commis d'erreur.\n Valeurs autorisées: ."
+    //     }
+    //     except (exception $e) {
+    //         echo "Il y a eu un problème lors du calcul de l'impôt:" . $e . PHP_EOL;
+    //         return false;
+    //     }
+    // }
 
 }
