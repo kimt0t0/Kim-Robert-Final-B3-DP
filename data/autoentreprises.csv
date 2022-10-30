@@ -1,0 +1,5 @@
+#prénom,nom,SIRET,régime d'activité,régime fiscal,CA HT mensuel (ceci est une ligne commenatire qui doit être ignorée)
+John, Incubator Jones,18812369758410, BIC(Vente), Prélèvement à la source, 3235€
+Emily, Brontë, 78842369738410, BIC(Vente), Prélèvement à la source, 1507€
+Rachelle,Tèrdif, 188236973846, BNC, Prélèvement libératoire, 2205€
+Sarha,E. Cox,33512369768412,BIC, Prélèvement libératoire,4050€
