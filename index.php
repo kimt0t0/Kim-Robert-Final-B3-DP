@@ -8,6 +8,7 @@ if (!defined('ABSPATH')) {
 
 require_once ABSPATH . './src/concrete/DataFile.class.php';
 require_once ABSPATH . './src/concrete/SelfEmployees/ConcreteSelfEmployee.class.php';
+require_once ABSPATH . './src/abstract/ReportsCreator.php';
 
 /* ACTIONS */
 

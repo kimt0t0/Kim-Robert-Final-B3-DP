@@ -40,15 +40,15 @@ class ConcreteStrategyDebitPAYE implements StrategyDebit {
 
     public function getSSC() {
         $this->social = $this->turnoverET * $this->sscRate;
-        echo "\n- Cotisations sociales: " . $this->social . PHP_EOL;
+        print("\n- Cotisations sociales: " . $this->social);
     }
     
     public function getTaxRate() {
-        echo "\n- Taux d'imposition: " . $this->taxRate;
+        print("\n- Taux d'imposition: " . $this->taxRate);
     }
 
     public function calculateTurnoverIT() {
         $this->turnoverIT = $this->turnoverET - $this->social;
-        echo "\n- CA TTC mensuel*: " . $this->turnoverIT . PHP_EOL;
+        print("\n- CA TTC mensuel (revenu imposable)*: " . $this->turnoverIT);
     }
 }
