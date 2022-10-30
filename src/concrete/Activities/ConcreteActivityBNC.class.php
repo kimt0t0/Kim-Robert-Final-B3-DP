@@ -6,11 +6,10 @@ if (!defined('ABSPATH')) {
 
 require_once ABSPATH . './src/abstract/AActivity.php';
 
-class ActivityBICV extends AActivity {
+class ConcreteActivityBNC extends AActivity {
     public function __construct () {
         $this->activity = "BCN";
-        $this->PAYERate = 71/100;
-        $this->VFLRate = 1/100;
+        $this->PAYERate = 34/100;
+        $this->VFLRate = 2.2/100;
     }
-
 }

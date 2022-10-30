@@ -13,11 +13,6 @@ class DataFile {
         return print($dataRead);
     }
 
-    // might be useful if we want to update the data later
-    public function updateFile() {
-        $dataFile = fopen($this->path, "a+"); //opens file in read&update mode - keeps the already existing content
-    }
-
     public function removeFile() {
         try {
             unlink($this->path);
