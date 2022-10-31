@@ -53,7 +53,7 @@ class SelfEmployee {
         $siret = ("- SIRET: " . $this->siret);
         $activityType = ("- Régime d activite: " . $this->activityType);
         $debitType = ("- Type d'imposition: " . $this->debitType);
-        $turnoverET = ("- CA HT mensuel: " . $this->turnoverET);
+        $turnoverET = ("- CA HT mensuel: " . $this->turnoverET . " €");
         $social = $this->debitStrategy->getSSC();
         $tax = $this->debitStrategy->getTax();
         $turnoverIT = $this->debitStrategy->calculateTurnoverIT();

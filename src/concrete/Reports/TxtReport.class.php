@@ -6,7 +6,7 @@ class TxtReport implements IReport {
         $this->path = $this->setReportPath($name);
         print("\nEcriture du rapport...");
         $this->writeReport($this->path, $dataArray);
-        print("\nVérification du rapport: ");
+        print("\nVérification du rapport: \n");
         $this->readReport($this->path);
     }
 
@@ -25,7 +25,7 @@ class TxtReport implements IReport {
 
     public function readReport($path) {
         $report = fopen($path, "r");
-        fread($report, filesize($path));
+        print(fread($report, filesize($path)));
         fclose($report);
     }
 

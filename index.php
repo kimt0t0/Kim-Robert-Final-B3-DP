@@ -27,13 +27,12 @@ for ($counter=0; $counter < count($dataArray); $counter += 1) {
     ${"user" . $counter} = new SelfEmployee($counter, $dataArray[$counter]);
     // Check siret number and skip to next line of incorrect:
     if (${"user" . $counter}->checkSiret() !== true) {
-        print("Numéro de siret inexact, rapport abandonné.\n\n");
+        print("\nNuméro de siret inexact, rapport abandonné.\n\n");
         continue;
     }
     else {
         // Store user info:
         $userDataArray = ${"user" . $counter}->storeUserInfo();
-        print_r($userDataArray);
         $reportsFactory = new ReportFactoryConcrete($userDataArray);
 
     }

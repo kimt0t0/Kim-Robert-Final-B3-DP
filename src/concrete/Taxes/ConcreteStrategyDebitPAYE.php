@@ -40,7 +40,7 @@ class ConcreteStrategyDebitPAYE implements StrategyDebit {
 
     public function getSSC() {
         $this->social = $this->turnoverET * $this->sscRate;
-        return ("- Cotisations sociales: " . $this->social);
+        return ("- Cotisations sociales: " . $this->social . " €");
     }
     
     public function getTax() {
@@ -49,6 +49,6 @@ class ConcreteStrategyDebitPAYE implements StrategyDebit {
 
     public function calculateTurnoverIT() {
         $this->turnoverIT = $this->turnoverET - $this->social;
-        return ("- CA TTC mensuel (revenu imposable)*: " . $this->turnoverIT);
+        return ("- CA TTC mensuel (revenu imposable)*: " . $this->turnoverIT . " €");
     }
 }
