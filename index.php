@@ -14,7 +14,7 @@ require_once ABSPATH . './src/concrete/SelfEmployees/ConcreteSelfEmployee.class.
 //Instanciate file object
 $dataFile = new DataFile("./data/autoentreprises.csv");
 //Convert text file to array
-$dataArray = $dataFile->convertFile();
+$dataArray = $dataFile->convertFileToArray();
 $dataFile->closeFile();
 
 // You can activate the following lines if you wish to test file removal:

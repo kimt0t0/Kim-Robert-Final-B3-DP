@@ -24,32 +24,6 @@ abstract class ASelfEmployee {
         $this->turnoverET = (int) $userArray[5];
     }
 
-    public function storeUserInfo() {
-        $myArray = $this->userInfo = array();
-        
-        $this->switchContextDebit ();
-        
-        $num=("- Rapport numéro " . $this->num);
-        $lastName = ("- Nom: " . $this->lastName);
-        $firstName = ("- Prénom: " . $this->firstName);
-        $siret = ("- SIRET: " . $this->siret);
-        $activityType = ("- Régime d activite: " . $this->activityType);
-        $debitType = ("- Type d'imposition: " . $this->debitType);
-        $turnoverET = ("- CA HT mensuel: " . $this->turnoverET);
-        $social = ("- Cotisations sociales: " . $this->debitStrategy->getSSC());
-        $tax = $this->debitStrategy->getTax();
-        $turnoverIT = $this->debitStrategy->calculateTurnoverIT();
-        
-        array_push($myArray, $num, $lastName, $firstName, $siret, $activityType, $debitType, $turnoverET, $social, $tax, $turnoverIT);
-        
-        if($this->debitType === "Prélèvement à la source") {
-            $additionalInfo = ("\n\n*Dans le cas du régime fiscal de prélèvement à la source, le montant de l'impôt n'est pas indiqué sur le CA TTC, il sera prélevé ultérieurement par le centre des impôts.");
-            array_push($myArray, $additionalInfo);
-        }
-
-        return $myArray;
-    }
-
     public function checkSiret() {
         $siretSpaceless = $this->siret;
         $siretLength = strlen($siretSpaceless);
@@ -66,6 +40,37 @@ abstract class ASelfEmployee {
             case "Prélèvement libératoire": 
                 return $this->debitStrategy = new ContextDebit(new ConcreteStrategyDebitClassic($this->activityType, $this->turnoverET));
         }
+    }
+
+    public function storeUserInfo() {
+        $dataArray = array();
+        
+        $this->switchContextDebit ();
+        
+        $num=("- Rapport numéro " . $this->num);
+        $lastName = ("- Nom: " . $this->lastName);
+        $firstName = ("- Prénom: " . $this->firstName);
+        $siret = ("- SIRET: " . $this->siret);
+        $activityType = ("- Régime d activite: " . $this->activityType);
+        $debitType = ("- Type d'imposition: " . $this->debitType);
+        $turnoverET = ("- CA HT mensuel: " . $this->turnoverET);
+        $social = $this->debitStrategy->getSSC();
+        $tax = $this->debitStrategy->getTax();
+        $turnoverIT = $this->debitStrategy->calculateTurnoverIT();
+        
+        array_push($dataArray, $num, $lastName, $firstName, $siret, $activityType, $debitType, $turnoverET, $social, $tax, $turnoverIT);
+        
+        if($this->debitType === "Prélèvement à la source") {
+            $this->additionalInfo = "*Dans le cas du régime fiscal de prélèvement à la source, le montant de l'impôt n'est pas indiqué sur le CA TTC, il sera prélevé ultérieurement par le centre des impôts.";
+            array_push($dataArray, $this->additionalInfo);
+        }
+
+        return $dataArray;
+    }
+
+    public function writeReports() {
+        // new TxtReport($this )
+        // new PdfReport()
     }
 
     // public function getSSCRate() {}

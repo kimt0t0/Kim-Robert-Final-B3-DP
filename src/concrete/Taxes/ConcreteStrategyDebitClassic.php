@@ -40,7 +40,7 @@ class ConcreteStrategyDebitClassic implements StrategyDebit {
 
     public function getSSC() {
         $this->social = $this->turnoverET * $this->sscRate;
-        return $this->social;
+        return ("- Cotisations sociales: " . $this->social);
     }
     
     public function getTax() {

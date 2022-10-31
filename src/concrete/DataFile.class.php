@@ -26,7 +26,7 @@ class DataFile {
         }
     }
 
-    public function convertFile() {
+    public function convertFileToArray() {
         $dataRead = fread($this->dataFile, filesize($this->path));
         $newLine = "\n";
         $coma = ",";
