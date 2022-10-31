@@ -7,7 +7,8 @@ if (!defined('ABSPATH')) {
 /* DEPENDENCIES */
 
 require_once ABSPATH . './src/concrete/DataFile.class.php';
-require_once ABSPATH . './src/concrete/SelfEmployees/ConcreteSelfEmployee.class.php';
+require_once ABSPATH . './src/concrete/SelfEmployees/SelfEmployee.class.php';
+require_once ABSPATH . './src/concrete/Reports/ReportFactoryConcrete.php';
 
 /* ACTIONS */
 
@@ -23,13 +24,17 @@ $dataFile->closeFile();
 
 // Instanciate self-employee objects for each line in the file/array:
 for ($counter=0; $counter < count($dataArray); $counter += 1) {
-    ${"user" . $counter} = new ConcreteSelfEmployee($counter, $dataArray[$counter]);
+    ${"user" . $counter} = new SelfEmployee($counter, $dataArray[$counter]);
     // Check siret number and skip to next line of incorrect:
     if (${"user" . $counter}->checkSiret() !== true) {
         print("Numéro de siret inexact, rapport abandonné.\n\n");
         continue;
     }
-    // Store user info:
-    $userInfo = ${"user" . $counter}->storeUserInfo();
-    print_r($userInfo);
+    else {
+        // Store user info:
+        $userDataArray = ${"user" . $counter}->storeUserInfo();
+        print_r($userDataArray);
+        $reportsFactory = new ReportFactoryConcrete($userDataArray);
+
+    }
 }

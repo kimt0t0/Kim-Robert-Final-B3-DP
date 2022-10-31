@@ -1,0 +1,10 @@
+- Rapport numéro 3
+- Nom: E. Cox
+- Prénom: Sarha
+- SIRET: 33512369768412
+- Régime d activite: BIC
+- Type d'imposition: Prélèvement libératoire
+- CA HT mensuel: 4050
+- Cotisations sociales: 891
+- Montant imposé: 40.5
+- CA TTC mensuel: 3118.5

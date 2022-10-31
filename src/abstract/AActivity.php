@@ -1,5 +1,7 @@
 <?php
 
+// This abstract class could have been used for an activity types factory - in this project this file is useless
+// I just left it so you can see I got the idea
 abstract class AActivity {
     public function __construct() {}
 

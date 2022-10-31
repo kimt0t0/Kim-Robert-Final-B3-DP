@@ -10,7 +10,7 @@ require_once ABSPATH . './src/concrete/Taxes/ConcreteStrategyDebitPAYE.php';
 require_once ABSPATH . './src/concrete/Taxes/ConcreteStrategyDebitClassic.php';
 
 // I created an abstract class so that if we want to create more specific cases of self-employment it will be easier
-abstract class ASelfEmployee {
+class SelfEmployee {
 
     public function __construct($index, $userArray) {
         
@@ -67,12 +67,5 @@ abstract class ASelfEmployee {
 
         return $dataArray;
     }
-
-    public function writeReports() {
-        // new TxtReport($this )
-        // new PdfReport()
-    }
-
-    // public function getSSCRate() {}
 
 }
