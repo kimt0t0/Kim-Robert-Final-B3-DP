@@ -15,10 +15,10 @@ class TxtReport implements IReport {
     }
 
     public function setReportName($data) {
-        $num = $data[0];
-        $letter = $data[2][0];
-        $name = $data[1];
-        $reportName = str_replace(" ", "", ($num . $letter . "-" . $name));
+        $num = str_replace(" ", "", $data[0]);
+        $letter = str_replace(" ", "", $data[2][0]);
+        $name = str_replace(" ", "", $data[1]);
+        $reportName = strtolower($num . $letter . "-" . $name);
         return $reportName;
     }
 
