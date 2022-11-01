@@ -57,7 +57,7 @@ class SelfEmployee {
         $turnoverIT = $this->debitStrategy->calculateTurnoverIT();
         $turnoverET = $this->turnoverET;
         
-        array_push($dataArray, $num, $lastName, $firstName, $siret, $activityType, $turnoverIT, $social, $turnoverET, $tax);
+        array_push($dataArray, $num, $lastName, $firstName, $siret, $activityType, $turnoverET, $social, $turnoverIT, $tax);
 
         return $dataArray;
     }

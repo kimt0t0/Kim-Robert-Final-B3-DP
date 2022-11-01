@@ -3,8 +3,8 @@
 - Prénom: John
 - SIRET: 18812369758410
 - Régime d activité: BIC(Vente)
-- CA HT mensuel: Array
-- Cotisations sociales: 711.7
-- Revenu imposable*: 
-- CA TTC mensuel*: 
-*Dans le cas du régime fiscal de prélèvement à la source, le montant de l'impôt n'est pas indiqué sur le CA TTC, il sera prélevé ultérieurement par le centre des impôts.CA TTC mensuel
+- CA HT mensuel: 3235€
+- Cotisations sociales: 711.7€
+- Revenu imposable: 938.15€
+- CA TTC mensuel*: 2523.3€
+*Dans le cas du régime fiscal de prélèvement à la source, le montant de l'impôt n'est pas indiqué sur le CA TTC, il sera prélevé ultérieurement par le centre des impôts.

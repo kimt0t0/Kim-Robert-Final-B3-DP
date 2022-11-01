@@ -35,15 +35,20 @@ class TxtReport implements IReport {
         fwrite($reportFile, "\n- Prénom: " . $data[2]);
         fwrite($reportFile, "\n- SIRET: " . $data[3]);
         fwrite($reportFile, "\n- Régime d activité: " . $data[4]);
-        fwrite($reportFile, "\n- CA HT mensuel: " . $data[5]);
-        fwrite($reportFile, "\n- Cotisations sociales: " . $data[6]);
+        fwrite($reportFile, "\n- CA HT mensuel: " . $data[5] . "€");
+        fwrite($reportFile, "\n- Cotisations sociales: " . $data[6] . "€");
         if ($this->userDebitType === "Prélèvement à la source") {
-            fwrite($reportFile, "\n- Revenu imposable*: " . $data[7][1]);
-            fwrite($reportFile, "\n- CA TTC mensuel*: " . $data[7][0]);
+            fwrite($reportFile, "\n- Revenu imposable: " . $data[7][1] . "€");
+            fwrite($reportFile, "\n- CA TTC mensuel*: " . $data[7][0] . "€");
             fwrite($reportFile, "\n*Dans le cas du régime fiscal de prélèvement à la source, le montant de l'impôt n'est pas indiqué sur le CA TTC, il sera prélevé ultérieurement par le centre des impôts.");
 
         }
-        fwrite($reportFile, "CA TTC mensuel");
+        else if ($this->userDebitType === "Prélèvement libératoire") {
+            fwrite($reportFile, "\n- CA TTC mensuel: " . $data[7] . "€");
+        }
+        else {
+            fwrite($reportFile, "\n\nATTENTION: Type de prélèvement non reconnu par notre logiciel. Le calcul n a pas pu être finalisé.");
+        }
         fclose($reportFile);
     }
 
