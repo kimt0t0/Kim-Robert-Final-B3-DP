@@ -32,8 +32,7 @@ for ($counter=0; $counter < count($dataArray); $counter += 1) {
     }
     else {
         // Store user info:
-        $userDataArray = ${"user" . $counter}->storeUserInfo();
+        $userDataArray = ${"user" . $counter}->getUserInfo();
         $reportsFactory = new ReportFactoryConcrete($userDataArray);
-
     }
 }

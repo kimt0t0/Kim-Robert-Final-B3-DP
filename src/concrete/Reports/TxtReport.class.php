@@ -1,17 +1,29 @@
 <?php
 
+require_once ABSPATH . './src/interfaces/Reports/IReport.php';
+
 class TxtReport implements IReport {
 
-    public function __construct($name, $dataArray) {
-        $this->path = $this->setReportPath($name);
+    public function __construct($dataArray) {
+        $this->data = $dataArray;
+        $this->reportName = $this->setReportName($this->data);
+        $this->path = $this->setReportPath($this->reportName);
         print("\nEcriture du rapport...");
         $this->writeReport($this->path, $dataArray);
         print("\nVérification du rapport: \n");
         $this->readReport($this->path);
     }
 
-    public function setReportPath($name) {
-        $path = "./data/reports/txt" . $name . ".txt";
+    public function setReportName($data) {
+        $num = $data[0];
+        $letter = $data[2][0];
+        $name = $data[1];
+        $reportName = str_replace(" ", "", ($num . $letter . "-" . $name));
+        return $reportName;
+    }
+
+    public function setReportPath($reportName) {
+        $path = ABSPATH . "./data/reports/txt/" . $reportName . ".txt";
         return $path;
     }
 

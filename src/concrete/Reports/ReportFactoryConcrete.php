@@ -15,23 +15,16 @@ class ReportFactoryConcrete implements IReportFactory {
     // the methods with new arguments for each line in the datafile.
     public function __construct($userDataArray) {
         $this->userDataArray = $userDataArray;
-        $this->reportName = $this->nameReport($this->userDataArray);
-        $this->txtReport = $this->createTxtReport($this->reportName, $this->userDataArray);
-        // $this->htmlReport = $this->createHtmlReport($this->reportName, $this->userDataArray);
+        $this->txtReport = $this->createTxtReport($this->userDataArray);
+        $this->htmlReport = $this->createHtmlReport( $this->userDataArray);
     }
 
-    public function nameReport($userDataArray) {
-        // générer nom
-        $reportName = "test-report";
-        return $reportName;
+    public function createTxtReport($dataArray) {
+        $this->txtReport = new TxtReport($dataArray);
     }
 
-    public function createTxtReport($name, $dataArray) {
-        $this->txtReport = new TxtReport($name, $dataArray);
-    }
-
-    public function createHtmlReport($name, $dataArray) {
-        $this->htmlReport = new HtmlReport($name, $dataArray);
+    public function createHtmlReport($dataArray) {
+        $this->htmlReport = new HtmlReport($dataArray);
     }
 
 }

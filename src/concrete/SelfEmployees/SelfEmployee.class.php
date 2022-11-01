@@ -16,8 +16,8 @@ class SelfEmployee {
         
         $this->num = $index;
 
-        $this->firstName = $userArray[0];
-        $this->lastName = $userArray[1];
+        $this->firstName = trim($userArray[0]);
+        $this->lastName = trim($userArray[1]);
         $this->siret = trim($userArray[2]);
         $this->activityType = trim($userArray[3]);
         $this->debitType = trim($userArray[4]);
@@ -42,18 +42,18 @@ class SelfEmployee {
         }
     }
 
-    public function storeUserInfo() {
+    public function getUserInfo() {
         $dataArray = array();
         
         $this->switchContextDebit ();
         
-        $num=("- Rapport numéro " . $this->num);
-        $lastName = ("- Nom: " . $this->lastName);
-        $firstName = ("- Prénom: " . $this->firstName);
-        $siret = ("- SIRET: " . $this->siret);
-        $activityType = ("- Régime d activite: " . $this->activityType);
-        $debitType = ("- Type d'imposition: " . $this->debitType);
-        $turnoverET = ("- CA HT mensuel: " . $this->turnoverET . " €");
+        $num= $this->num;
+        $lastName = $this->lastName;
+        $firstName = $this->firstName;
+        $siret = $this->siret;
+        $activityType = $this->activityType;
+        $debitType = $this->debitType;
+        $turnoverET = $this->turnoverET;
         $social = $this->debitStrategy->getSSC();
         $tax = $this->debitStrategy->getTax();
         $turnoverIT = $this->debitStrategy->calculateTurnoverIT();
