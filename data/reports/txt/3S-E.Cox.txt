@@ -4,5 +4,5 @@
 - SIRET: 33512369768412
 - Régime d activité: BIC
 - CA HT mensuel: 4050€
-- Cotisations sociales: 891€
-- CA TTC mensuel: 3118.5€
+- Cotisations sociales: 518.4€
+- CA TTC mensuel: 1506.6€

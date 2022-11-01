@@ -6,27 +6,17 @@ if (!defined('ABSPATH')) {
 
 /* DEPENDENCIES */
 require_once ABSPATH . './src/interfaces/StrategyDebit.php';
-
+require_once ABSPATH . './src/concrete/Activities/ActivityFactoryConcrete.php';
 
 /* CLASS */
 // (PAYE = "Pay As You Earn" = prélèvement à la source)
 class ConcreteStrategyDebitPAYE implements StrategyDebit {
     public function __construct($activityType, $turnoverET) {
         try {
-            $this->activity = $activityType; //deletes spaces before/after
             $this->turnoverET = $turnoverET;
-            
-            switch ($this->activity) {
-                case "BIC":
-                    $this->taxRate = 50/100;
-                    $this->sscRate = 12.8/100;
-                case "BNC":
-                    $this->taxRate = 34/100;
-                    $this->sscRate = 22/100;
-                case "BIC(Vente)":
-                    $this->taxRate = 71/100;
-                    $this->sscRate = 22/100;
-            }
+            $this->activityFactory = new ActivityFactoryConcrete("paye", $activityType);
+            $this->taxRate = $this->activityFactory->activityRates->getTaxRate();
+            $this->sscRate = $this->activityFactory->activityRates->getSscRate();
         }
         catch (exception $e) {
             echo "Il y a eu un problème lors du calcul de l'impôt:" . $e . PHP_EOL;
