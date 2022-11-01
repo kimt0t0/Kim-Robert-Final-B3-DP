@@ -52,18 +52,12 @@ class SelfEmployee {
         $firstName = $this->firstName;
         $siret = $this->siret;
         $activityType = $this->activityType;
-        $debitType = $this->debitType;
-        $turnoverET = $this->turnoverET;
-        $social = $this->debitStrategy->getSSC();
         $tax = $this->debitStrategy->getTax();
+        $social = $this->debitStrategy->getSSC();
         $turnoverIT = $this->debitStrategy->calculateTurnoverIT();
+        $turnoverET = $this->turnoverET;
         
-        array_push($dataArray, $num, $lastName, $firstName, $siret, $activityType, $debitType, $turnoverET, $social, $tax, $turnoverIT);
-        
-        if($this->debitType === "Prélèvement à la source") {
-            $this->additionalInfo = "*Dans le cas du régime fiscal de prélèvement à la source, le montant de l'impôt n'est pas indiqué sur le CA TTC, il sera prélevé ultérieurement par le centre des impôts.";
-            array_push($dataArray, $this->additionalInfo);
-        }
+        array_push($dataArray, $num, $lastName, $firstName, $siret, $activityType, $turnoverIT, $social, $turnoverET, $tax);
 
         return $dataArray;
     }

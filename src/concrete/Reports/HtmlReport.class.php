@@ -2,7 +2,7 @@
 
 class HtmlReport implements IReport {
 
-    public function __construct($dataArray) {
+    public function __construct($dataArray, $userDebitType) {
         $this->data = $dataArray;
         $this->reportName = $this->setReportName($this->data);
         $this->path = $this->setReportPath($this->reportName);

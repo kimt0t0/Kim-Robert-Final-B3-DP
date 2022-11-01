@@ -33,6 +33,7 @@ for ($counter=0; $counter < count($dataArray); $counter += 1) {
     else {
         // Store user info:
         $userDataArray = ${"user" . $counter}->getUserInfo();
-        $reportsFactory = new ReportFactoryConcrete($userDataArray);
+        $userDebitType = ${"user" . $counter}->debitType;
+        $reportsFactory = new ReportFactoryConcrete($userDataArray, $userDebitType);
     }
 }

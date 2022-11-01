@@ -13,18 +13,19 @@ class ReportFactoryConcrete implements IReportFactory {
     //  the creation of a new factory for each line in the datafile.
     // You could instead choose to put all these actions in public methods, create only one factory and call 
     // the methods with new arguments for each line in the datafile.
-    public function __construct($userDataArray) {
+    public function __construct($userDataArray, $userDebitType) {
         $this->userDataArray = $userDataArray;
-        $this->txtReport = $this->createTxtReport($this->userDataArray);
-        $this->htmlReport = $this->createHtmlReport( $this->userDataArray);
+        $this->userDebitType = $userDebitType;
+        $this->txtReport = $this->createTxtReport($this->userDataArray, $userDebitType);
+        $this->htmlReport = $this->createHtmlReport( $this->userDataArray, $userDebitType);
     }
 
-    public function createTxtReport($dataArray) {
-        $this->txtReport = new TxtReport($dataArray);
+    public function createTxtReport($dataArray, $userDebitType) {
+        $this->txtReport = new TxtReport($dataArray, $userDebitType);
     }
 
-    public function createHtmlReport($dataArray) {
-        $this->htmlReport = new HtmlReport($dataArray);
+    public function createHtmlReport($dataArray, $userDebitType) {
+        $this->htmlReport = new HtmlReport($dataArray, $userDebitType);
     }
 
 }

@@ -1,10 +1,7 @@
-3
-E. Cox
-Sarha
-33512369768412
-BIC
-Prélèvement libératoire
-4050
-891
-40.5
-3118.5
+- Rapport numéro 3
+- Nom: E. Cox
+- Prénom: Sarha
+- SIRET: 33512369768412
+- Régime d activité: BIC
+- CA HT mensuel: 3118.5
+- Cotisations sociales: 891CA TTC mensuel

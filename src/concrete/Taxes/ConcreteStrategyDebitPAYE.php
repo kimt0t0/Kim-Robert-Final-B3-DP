@@ -49,6 +49,8 @@ class ConcreteStrategyDebitPAYE implements StrategyDebit {
 
     public function calculateTurnoverIT() {
         $this->turnoverIT = $this->turnoverET - $this->social;
-        return $this->turnoverIT;
+        $this->taxableIncome = $this->turnoverET * (1 - $this->taxRate);
+        $this->taxes = array($this->turnoverIT, $this->taxableIncome);
+        return $this->taxes;
     }
 }

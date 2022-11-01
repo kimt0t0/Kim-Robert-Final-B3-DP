@@ -1,11 +1,10 @@
-1
-Brontë
-Emily
-78842369738410
-BIC(Vente)
-Prélèvement à la source
-1507
-331.54
-0.71
-1175.46
-*Dans le cas du régime fiscal de prélèvement à la source, le montant de l'impôt n'est pas indiqué sur le CA TTC, il sera prélevé ultérieurement par le centre des impôts.
+- Rapport numéro 1
+- Nom: Brontë
+- Prénom: Emily
+- SIRET: 78842369738410
+- Régime d activité: BIC(Vente)
+- CA HT mensuel: Array
+- Cotisations sociales: 331.54
+- Revenu imposable*: 
+- CA TTC mensuel*: 
+*Dans le cas du régime fiscal de prélèvement à la source, le montant de l'impôt n'est pas indiqué sur le CA TTC, il sera prélevé ultérieurement par le centre des impôts.CA TTC mensuel

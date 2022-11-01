@@ -4,10 +4,11 @@ require_once ABSPATH . './src/interfaces/Reports/IReport.php';
 
 class TxtReport implements IReport {
 
-    public function __construct($dataArray) {
+    public function __construct($dataArray, $userDebitType) {
         $this->data = $dataArray;
         $this->reportName = $this->setReportName($this->data);
         $this->path = $this->setReportPath($this->reportName);
+        $this->userDebitType = $userDebitType;
         print("\nEcriture du rapport...");
         $this->writeReport($this->path, $dataArray);
         print("\nVérification du rapport: \n");
@@ -27,11 +28,22 @@ class TxtReport implements IReport {
         return $path;
     }
 
-    public function writeReport($path, $dataArray) {
+    public function writeReport($path, $data) {
         $reportFile = fopen($path, "w") or die("Impossible de créer le fichier dans la destination: " . $path); //will erase existing file of same name and destination if it exists - replace "w" with "x" if you want to launch an error if file already exists
-        foreach ($dataArray as $newline) {
-            fwrite($reportFile, $newline . "\n");
+        fwrite($reportFile, "- Rapport numéro " . $data[0]);
+        fwrite($reportFile, "\n- Nom: " . $data[1]);
+        fwrite($reportFile, "\n- Prénom: " . $data[2]);
+        fwrite($reportFile, "\n- SIRET: " . $data[3]);
+        fwrite($reportFile, "\n- Régime d activité: " . $data[4]);
+        fwrite($reportFile, "\n- CA HT mensuel: " . $data[5]);
+        fwrite($reportFile, "\n- Cotisations sociales: " . $data[6]);
+        if ($this->userDebitType === "Prélèvement à la source") {
+            fwrite($reportFile, "\n- Revenu imposable*: " . $data[7][1]);
+            fwrite($reportFile, "\n- CA TTC mensuel*: " . $data[7][0]);
+            fwrite($reportFile, "\n*Dans le cas du régime fiscal de prélèvement à la source, le montant de l'impôt n'est pas indiqué sur le CA TTC, il sera prélevé ultérieurement par le centre des impôts.");
+
         }
+        fwrite($reportFile, "CA TTC mensuel");
         fclose($reportFile);
     }
 
